@@ -10,7 +10,13 @@ export const useAuth = () => {
   const { showMessage } = useMessage();
   const [loading, setLoading] = useState<boolean>(false);
   const { setLoginUser } = useLoginUser();
-
+  const logout = useCallback(() => {
+    setLoading(true);
+    showMessage({ title: "ログアウトしました", status: "info" });
+    setLoginUser(null);
+    history.push("/");
+    setLoading(false);
+  }, [history, showMessage, setLoginUser]);
   const login = useCallback(
     (id: string) => {
       setLoading(true);
@@ -34,5 +40,5 @@ export const useAuth = () => {
     },
     [history, showMessage, setLoginUser]
   );
-  return { loading, login };
+  return { loading, login, logout };
 };

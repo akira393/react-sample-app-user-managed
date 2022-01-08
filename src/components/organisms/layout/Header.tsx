@@ -4,18 +4,19 @@ import { useHistory } from "react-router-dom";
 
 import { MenuIconButton } from "../../atoms/button/MenuIconButton";
 import { MenueDrawer } from "../../molecules/MenueDrawer";
+import { useAuth } from "../../../hooks/useAuth";
 
 export const Header: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const history = useHistory();
-
+  const { logout } = useAuth();
   const onClickHome = useCallback(() => history.push("/home"), []);
   const onClickUserManagement = useCallback(
     () => history.push("/home/users"),
     []
   );
   const onClickSetting = useCallback(() => history.push("/home/setting"), []);
-
+  const onClickLogOut = useCallback(logout, [logout]);
   return (
     <>
       <Flex
@@ -52,6 +53,7 @@ export const Header: VFC = memo(() => {
         <MenuIconButton onOpen={onOpen} />
       </Flex>
       <MenueDrawer
+        onClickLogOut={onClickLogOut}
         isOpen={isOpen}
         onClose={onClose}
         onClickHome={onClickHome}

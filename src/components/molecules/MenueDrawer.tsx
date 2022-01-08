@@ -15,6 +15,7 @@ type Props = {
   onClickHome: () => void;
   onClickUserManagement: () => void;
   onClickSetting: () => void;
+  onClickLogOut: () => void;
 };
 export const MenueDrawer: VFC<Props> = (props) => {
   const {
@@ -22,7 +23,8 @@ export const MenueDrawer: VFC<Props> = (props) => {
     onClose,
     onClickHome,
     onClickUserManagement,
-    onClickSetting
+    onClickSetting,
+    onClickLogOut
   } = props;
 
   return (
@@ -41,6 +43,9 @@ export const MenueDrawer: VFC<Props> = (props) => {
           </Button>
           <Button w="100%" onClick={onClickSetting}>
             設定
+          </Button>
+          <Button w="100%" onClick={onClickLogOut}>
+            ログアウト
           </Button>
         </DrawerBody>
       </DrawerContent>
