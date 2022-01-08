@@ -1,2 +1,2 @@
-# react-sample-app-user-managed
+# react-sample-user-managed-app
 Created with CodeSandbox
